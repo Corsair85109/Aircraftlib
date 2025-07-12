@@ -28,5 +28,8 @@ namespace AircraftLib.Utility
 
         [Keybind("Decrease Thrust")]
         public KeyCode thrustDecreaseBind = KeyCode.S;
+
+        [Toggle("Use accurate water surface height")]
+        public bool useAccurateWaterSurface = true;
     }
 }

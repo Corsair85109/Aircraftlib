@@ -71,6 +71,10 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
@@ -86,6 +90,7 @@
     <Compile Include="Engines\ThrottledEngine.cs" />
     <Compile Include="Managers\Buoyant.cs" />
     <Compile Include="Managers\WaveManager.cs" />
+    <Compile Include="Utility\ALUtils.cs" />
     <Compile Include="VehicleTypes\AirshipVehicle.cs" />
     <Compile Include="Utility\ALLogger.cs" />
     <Compile Include="Utility\Config.cs" />

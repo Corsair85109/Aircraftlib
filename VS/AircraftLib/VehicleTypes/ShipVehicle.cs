@@ -15,10 +15,14 @@ namespace AircraftLib.VehicleTypes
 
         public abstract float BuoyancyDepthToFullSubmerge { get; }
         public abstract float BuoyancyMult { get; }
+        public virtual float WaterForwardDrag { get { return 0.1f; } }
+        public virtual float WaterVerticalDrag { get { return 0.9f; } }
 
         public override void Awake()
         {
             base.Awake();
+
+            stabilizeRoll = false;
 
             int count = BuoyancyPoints.Count;
 
@@ -30,6 +34,8 @@ namespace AircraftLib.VehicleTypes
                 buoyant.depthToFullSubmerge = BuoyancyDepthToFullSubmerge;
                 buoyant.buoyancyMult = BuoyancyMult;
                 buoyant.buoyantPointCount = count;
+                buoyant.waterForwardDrag = WaterForwardDrag;
+                buoyant.waterVerticalDrag = WaterVerticalDrag;
             }
         }
     }

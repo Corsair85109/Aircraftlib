@@ -16,32 +16,41 @@ namespace AircraftLib.Managers
 
         public int buoyantPointCount;
 
-        public float waterDrag = 0.99f;
-        public float waterAngularDrag = 0.5f;
+        public float waterForwardDrag;
+        public float waterVerticalDrag;
         
 
         public void Start()
         {
             // gravity is applied at buoyant point positions instead of centre
             rb.useGravity = false;
+
+            
         }
 
         public void FixedUpdate()
         {
+            // add own drag
+            rb.drag = 0.01f;
+
+
             // apply gravity
             rb.AddForceAtPosition(Physics.gravity / buoyantPointCount, transform.position, ForceMode.Acceleration);
 
             float posY = transform.position.y;
-            float seaSurfaceY = WaveManager.main.GetWaveHeight(transform.position.x);
+            float seaSurfaceY = WaveManager.main.GetWaveHeight(transform.position);
 
             if (posY < seaSurfaceY)
             {
-                float displaceMult = Mathf.Clamp01((seaSurfaceY - posY) / depthToFullSubmerge) * buoyancyMult;
+                float displaceMult = Mathf.Clamp01((seaSurfaceY - posY) / depthToFullSubmerge);
 
-                rb.AddForceAtPosition(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displaceMult, 0f), transform.position, ForceMode.Acceleration);
+                // float force
+                rb.AddForceAtPosition(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displaceMult * buoyancyMult, 0f), transform.position, ForceMode.Acceleration);
 
-                rb.AddForce(displaceMult * -rb.velocity * waterDrag * Time.fixedDeltaTime, ForceMode.VelocityChange);
-                rb.AddTorque(displaceMult * -rb.angularVelocity * waterAngularDrag * Time.fixedDeltaTime, ForceMode.VelocityChange);
+                // water drag force
+                Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+                Vector3 dragForce = new Vector3(-localVelocity.x * waterVerticalDrag, -localVelocity.y * waterVerticalDrag, -localVelocity.z * waterForwardDrag);
+                rb.AddRelativeForce(displaceMult * dragForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
             }
         }
     }
