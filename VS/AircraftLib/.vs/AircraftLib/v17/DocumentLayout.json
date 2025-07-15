@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|c:\\users\\aaron\\documents\\github\\aircraftlib\\vs\\aircraftlib\\engines\\boatengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\boatengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\buoyant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\buoyant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,14 +55,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "BoatEngine.cs",
+              "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\BoatEngine.cs",
+              "RelativeDocumentMoniker": "Engines\\BoatEngine.cs",
+              "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\BoatEngine.cs",
+              "RelativeToolTip": "Engines\\BoatEngine.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwCAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T05:03:54.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Buoyant.cs",
               "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\Buoyant.cs",
               "RelativeDocumentMoniker": "Managers\\Buoyant.cs",
               "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\Buoyant.cs",
               "RelativeToolTip": "Managers\\Buoyant.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCgAAABTAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCwAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T16:15:33.852Z"
+              "WhenOpened": "2025-07-10T16:15:33.852Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -68,7 +86,7 @@
               "RelativeDocumentMoniker": "Managers\\WaveManager.cs",
               "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\WaveManager.cs",
               "RelativeToolTip": "Managers\\WaveManager.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwEUAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwC8AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T15:11:50.505Z",
               "EditorCaption": ""

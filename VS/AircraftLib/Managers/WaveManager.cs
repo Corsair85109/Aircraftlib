@@ -12,9 +12,55 @@ namespace AircraftLib.Managers
     {
         public static WaveManager main = Player.main.gameObject.EnsureComponent<WaveManager>();
 
+        public float baseFrequency = 0.4f;
+        public float baseAmplitude = 0.25f;
+        public float baseSpeed = 5f;
 
 
-        public WaterSurface surface;
+        public float GetWaveHeight(Vector3 position)
+        {
+            float time = Time.time;
+            float height = 0f;
+
+            float freq = baseFrequency;
+            float amp = baseAmplitude;
+            float speed = baseSpeed;
+
+            // add sine waves to simulate water surface
+
+            freq = freq * 1f;
+            amp = amp * 0.7f;
+            speed = speed * 1f;
+            height += Mathf.Sin(position.x * freq + time * speed) * amp;
+
+
+            freq = freq * 1f;
+            amp = amp * 0.5f;
+            speed = speed * 1.5f;
+            height += Mathf.Sin(position.z * freq + time * speed) * amp;
+
+            freq = freq * 1f;
+            amp = amp * 0.1f;
+            speed = speed * 2f;
+            height += Mathf.Sin((position.x + position.z) * freq + time * speed) * amp;
+
+
+            return height;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // stuff below here was an attempt to get the actual visual height of the water surface
+
+        /*public WaterSurface surface;
         public Texture2D displacementTexture;
 
         public bool textureLoadedThisFrame = false;
@@ -99,6 +145,6 @@ namespace AircraftLib.Managers
             RenderTexture.active = currentRT;
 
             textureLoadedThisFrame = true;
-        }
+        }*/
     }
 }

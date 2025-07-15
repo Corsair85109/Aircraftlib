@@ -20,8 +20,6 @@ namespace AircraftLib.Engines
         public abstract int SpeedAtMaxYaw { get;}
         public abstract bool TurnDependsOnSpeed { get;}
 
-        private float yawMax = 10f;
-
 
         // stop mouse rotation
         public override void ControlRotation()
@@ -29,6 +27,11 @@ namespace AircraftLib.Engines
             return;
         }
 
+        // stop vf drag
+        protected override void ApplyDrag(Vector3 move)
+        {
+            return;
+        }
         protected override float waterDragDecay
         {
             get
