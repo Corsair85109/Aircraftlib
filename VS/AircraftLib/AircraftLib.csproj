@@ -89,6 +89,7 @@
     <Compile Include="Engines\BoatEngine.cs" />
     <Compile Include="Engines\ThrottledEngine.cs" />
     <Compile Include="Managers\Buoyant.cs" />
+    <Compile Include="Managers\ShipPushPoint.cs" />
     <Compile Include="Managers\WaveManager.cs" />
     <Compile Include="Utility\ALUtils.cs" />
     <Compile Include="VehicleTypes\AirshipVehicle.cs" />

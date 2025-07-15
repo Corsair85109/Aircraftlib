@@ -79,7 +79,7 @@ namespace AircraftLib.Engines
                 }
 
                 // calculate turn forces
-                float roll = turnVec * moveVector * TurnTiltForce * Time.fixedDeltaTime * Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / SpeedAtMaxTilt);
+                float roll = turnVec * TurnTiltForce * Time.fixedDeltaTime * Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / SpeedAtMaxTilt);
                 float yaw = turnVec * moveVector * MaxTurnForce * Time.fixedDeltaTime;
 
                 if (TurnDependsOnSpeed)
