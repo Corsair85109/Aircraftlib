@@ -20,6 +20,8 @@ namespace AircraftLib.Engines
         public override bool CanMoveAboveWater { get { return true; } }
         public override bool CanRotateAboveWater { get { return false; } }
 
+        public virtual bool HasThrustVectoring { get { return false; } }
+
 
         void IPlayerListener.OnPlayerEntry()
         {
@@ -42,7 +44,7 @@ namespace AircraftLib.Engines
         protected float pitchSensitivity { get; private set; } = -100f;
         protected float yawSensitivity { get; private set; } = 5f;
 
-        protected float speedDiv { get; private set; } = 100f;
+        protected virtual float speedDiv { get; set; } = 100f;
 
         protected float rollAngle = 0f;
         protected float rollDirection;
@@ -133,6 +135,8 @@ namespace AircraftLib.Engines
 
             // base on speed
             float speedMult = RB.velocity.magnitude / speedDiv;
+
+            if (HasThrustVectoring) speedMult = 1f;
 
 
             // pitch

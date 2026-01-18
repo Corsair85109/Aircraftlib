@@ -98,7 +98,6 @@
     <Compile Include="Managers\ShipPushPoint.cs" />
     <Compile Include="Managers\WaveManager.cs" />
     <Compile Include="Patches\FoundationPatch.cs" />
-    <Compile Include="Patches\PlayerStartPatch.cs" />
     <Compile Include="Utility\ALUtils.cs" />
     <Compile Include="Utility\ConsoleCommands.cs" />
     <Compile Include="Utility\RealisticControllCrosshair.cs" />

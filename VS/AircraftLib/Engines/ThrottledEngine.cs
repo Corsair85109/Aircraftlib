@@ -52,6 +52,12 @@ namespace AircraftLib.Engines
             }
         }
 
+        public virtual bool CanStrafe {  get { return false; } }
+
+        public virtual float StrafeThrust { get; set; } = 300000f;
+
+        public virtual bool CanStrafeOnLand { get { return false; } }
+
 
         public float throttle = 0f;
         protected float lastThrottle = 0f;
@@ -127,7 +133,9 @@ namespace AircraftLib.Engines
                 {
                     float thrust = (throttle < 0f) ? MaxReverseThrust : MaxForwardThrust;
                     thrust = ((throttle / 100) * thrust) * Time.fixedDeltaTime;
+
                     Vector3 localForce = new Vector3(0f, 0f, thrust);
+
                     if (AnyThrustPosition)
                     {
                         RB.AddRelativeForce(localForce, ForceMode.Force);
@@ -141,6 +149,33 @@ namespace AircraftLib.Engines
                     if (PitchBack)
                     {
                         RB.AddRelativeTorque(new Vector3(-PitchBackMult * thrust * throttle * Time.fixedDeltaTime, 0f, 0f));
+                    }
+
+                    if (CanStrafe && (CanStrafeOnLand ||  MV.transform.position.y <= Ocean.GetOceanLevel()))
+                    {
+                        int strafeDirection = 0;
+                        int vertDirection = 0;
+                        if (GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey))
+                        {
+                            strafeDirection -= 1;
+                        }
+                        if (GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey))
+                        {
+                            strafeDirection += 1;
+                        }
+                        if (GameInput.GetButtonHeld(AircraftLibPlugin.UpKey))
+                        {
+                            vertDirection += 1;
+                        }
+                        if (GameInput.GetButtonHeld(AircraftLibPlugin.DownKey))
+                        {
+                            vertDirection -= 1;
+                        }
+
+                        if (strafeDirection != 0 || vertDirection != 0)
+                        {
+                            RB.AddRelativeForce(new Vector3(strafeDirection * StrafeThrust * Time.fixedDeltaTime, vertDirection * StrafeThrust * Time.fixedDeltaTime, 0f), ForceMode.Force);
+                        }
                     }
                 }
             }

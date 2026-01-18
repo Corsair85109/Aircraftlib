@@ -23,10 +23,10 @@ namespace AircraftLib.VehicleTypes
         public virtual float CriticalAOA { get { return 20f; } }
         public virtual int ZeroLiftAOA { get { return -2; } }
 
+        protected virtual bool gearOut { get; private set; } = true;
+
 
         public float AngleOfAttack { get; private set; }
-
-        private Vector3 lastPosition;
 
         public override void FixedUpdate()
         {
@@ -41,6 +41,24 @@ namespace AircraftLib.VehicleTypes
             AngleOfAttack = -Mathf.Atan2(localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
 
             FlightManager.DoPlaneFlight(this);
+        }
+
+        public override void Start()
+        {
+            base.Start();
+
+            FlightManager.CheckLandingGear(this);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (GameInput.GetButtonDown(AircraftLibPlugin.GearKey))
+            {
+                gearOut = !gearOut;
+                FlightManager.CheckLandingGear(this);
+            }
         }
 
         public float GetCalculatedLiftCoefficient()
@@ -62,7 +80,7 @@ namespace AircraftLib.VehicleTypes
 
         public bool IsGearOut()
         {
-            return true;
+            return gearOut;
         }
     }
 }
