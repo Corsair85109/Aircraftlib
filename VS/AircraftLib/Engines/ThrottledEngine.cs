@@ -8,77 +8,32 @@ using System.Threading.Tasks;
 using UnityEngine;
 using VehicleFramework;
 using VehicleFramework.Engines;
+using VehicleFramework.VehicleRootComponents;
 
 namespace AircraftLib.Engines
 {
     public abstract class ThrottledEngine : ModVehicleEngine
     {
         // disable vf movement
-        protected override float FORWARD_TOP_SPEED
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float REVERSE_TOP_SPEED
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float STRAFE_MAX_SPEED
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float VERT_MAX_SPEED
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float FORWARD_ACCEL
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float REVERSE_ACCEL
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float STRAFE_ACCEL
-        {
-            get
-            {
-                return 0f;
-            }
-        }
-        protected override float VERT_ACCEL
-        {
-            get
-            {
-                return 0f;
-            }
-        }
+        protected override float FORWARD_TOP_SPEED { get { return 0f; } }
+        protected override float REVERSE_TOP_SPEED { get { return 0f; } }
+        protected override float STRAFE_MAX_SPEED { get { return 0f; } }
+        protected override float VERT_MAX_SPEED { get { return 0f; } }
+        protected override float FORWARD_ACCEL { get { return 0f; } }
+        protected override float REVERSE_ACCEL { get { return 0f; } }
+        protected override float STRAFE_ACCEL { get { return 0f; } }
+        protected override float VERT_ACCEL { get { return 0f; } }
+
 
 
         // impliment own movement
-        // turning in this engine should be handled by derived subclass
+        // rotation for this engine should be handled by the subclass
 
         public abstract float MaxForwardThrust { get; }
         public abstract float MaxReverseThrust { get; }
         public abstract bool HasReverse { get; }
         public abstract Transform ThrustPosition { get; }
+        public virtual bool AnyThrustPosition { get { return false; } }
 
         public abstract bool PitchBack { get; }
         public virtual float PitchBackMult 
@@ -98,13 +53,13 @@ namespace AircraftLib.Engines
         }
 
 
-        internal float throttle = 0f;
-        private float lastThrottle = 0f;
+        public float throttle = 0f;
+        protected float lastThrottle = 0f;
 
         // throttle percent change per second
-        internal virtual int ThrottleChangeStep { get { return 200; } }
-
-        private int throttleDeadzone = 5;
+        protected virtual int ThrottleChangeStep { get { return 200; } }
+        // the max value where the throttle snaps to zero
+        protected virtual int throttleDeadzone { get { return 5; } }
 
 
         public override void FixedUpdate()
@@ -114,7 +69,7 @@ namespace AircraftLib.Engines
             DrainThrottledPower();
         }
 
-        private float ClampThrottle()
+        protected float ClampThrottle()
         {
             if (HasReverse)
             {
@@ -126,48 +81,35 @@ namespace AircraftLib.Engines
             }
         }
 
-        private void DoThrottle()
+        protected void DeadzoneThrottle()
         {
-            if (!mv.IsPlayerControlling())
-            {
-                return;
-            }
-
-            // change throttle
-            if (GameInput.GetKey(AircraftLibPlugin.ModConfig.thrustIncreaseBind))
-            {
-                throttle += ThrottleChangeStep * Time.fixedDeltaTime;
-                throttle = ClampThrottle();
-            }
-            if (GameInput.GetKey(AircraftLibPlugin.ModConfig.thrustDecreaseBind))
-            {
-                throttle -= ThrottleChangeStep * Time.fixedDeltaTime;
-                throttle = ClampThrottle();
-            }
-
-            // deadzone
             if ((-throttleDeadzone < throttle) && (throttle < throttleDeadzone))
             {
                 throttle = 0f;
             }
+        }
 
-            // add force
-            if (throttle != 0f)
+        protected virtual void DoThrottle()
+        {
+            if (!MV.IsPlayerControlling()) return;
+
+            // change throttle
+            if (GameInput.GetButtonHeld(AircraftLibPlugin.IncreaseThrustKey))
             {
-                if (CanMoveAboveWater || ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position))
-                {
-                    float thrust = (throttle < 0f) ? MaxReverseThrust : MaxForwardThrust;
-                    thrust = ((throttle / 100) * thrust) * Time.fixedDeltaTime;
-                    Vector3 localForce = new Vector3(0f, 0f, thrust);
-                    Vector3 worldForce = transform.TransformDirection(localForce);
-                    rb.AddForceAtPosition(worldForce, ThrustPosition.position, ForceMode.Force);
-
-                    if (PitchBack)
-                    {
-                        rb.AddRelativeTorque(new Vector3(-PitchBackMult * thrust * throttle * Time.fixedDeltaTime, 0f, 0f));
-                    }
-                }
+                throttle += ThrottleChangeStep * Time.fixedDeltaTime;
+                throttle = ClampThrottle();
             }
+            else if (GameInput.GetButtonHeld(AircraftLibPlugin.DecreaseThrustKey))
+            {
+                throttle -= ThrottleChangeStep * Time.fixedDeltaTime;
+                throttle = ClampThrottle();
+            }
+            else
+            {
+                DeadzoneThrottle();
+            }
+
+            ApplyForce();
 
             // display throttle with nautilus message
             if (throttle != lastThrottle)
@@ -177,17 +119,42 @@ namespace AircraftLib.Engines
             lastThrottle = throttle;
         }
 
+        protected virtual void ApplyForce()
+        {
+            if (throttle != 0f)
+            {
+                if (CanMoveAboveWater || ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position))
+                {
+                    float thrust = (throttle < 0f) ? MaxReverseThrust : MaxForwardThrust;
+                    thrust = ((throttle / 100) * thrust) * Time.fixedDeltaTime;
+                    Vector3 localForce = new Vector3(0f, 0f, thrust);
+                    if (AnyThrustPosition)
+                    {
+                        RB.AddRelativeForce(localForce, ForceMode.Force);
+                    }
+                    else
+                    {
+                        Vector3 worldForce = transform.TransformDirection(localForce);
+                        RB.AddForceAtPosition(worldForce, ThrustPosition.position, ForceMode.Force);
+                    }
+
+                    if (PitchBack)
+                    {
+                        RB.AddRelativeTorque(new Vector3(-PitchBackMult * thrust * throttle * Time.fixedDeltaTime, 0f, 0f));
+                    }
+                }
+            }
+        }
+
         public void DrainThrottledPower()
         {
-            float upgradeModifier = Mathf.Pow(0.85f, mv.numEfficiencyModules);
+            float upgradeModifier = Mathf.Pow(0.85f, MV.NumEfficiencyModules);
 
             float throttleMult = Mathf.Abs(throttle / 100) * 3;
 
-            mv.GetComponent<PowerManager>().TrySpendEnergy(basePowerConsumptionPerSecond * upgradeModifier * throttleMult * Time.deltaTime);
+            MV.gameObject.EnsureComponent<PowerManager>().TrySpendEnergy(basePowerConsumptionPerSecond * upgradeModifier * throttleMult * Time.deltaTime);
         }
 
-
-        
 
 
     }

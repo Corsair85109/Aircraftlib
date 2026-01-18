@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +55,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Addressables">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -85,26 +92,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AircraftLibPlugin.cs" />
-    <Compile Include="Engines\AirshipEngines.cs" />
     <Compile Include="Engines\BoatEngine.cs" />
     <Compile Include="Engines\ThrottledEngine.cs" />
     <Compile Include="Managers\Buoyant.cs" />
     <Compile Include="Managers\ShipPushPoint.cs" />
     <Compile Include="Managers\WaveManager.cs" />
+    <Compile Include="Patches\FoundationPatch.cs" />
+    <Compile Include="Patches\PlayerStartPatch.cs" />
     <Compile Include="Utility\ALUtils.cs" />
+    <Compile Include="Utility\ConsoleCommands.cs" />
+    <Compile Include="Utility\RealisticControllCrosshair.cs" />
     <Compile Include="VehicleTypes\AirshipVehicle.cs" />
     <Compile Include="Utility\ALLogger.cs" />
     <Compile Include="Utility\Config.cs" />
     <Compile Include="Patches\DepthMeterPatch.cs" />
     <Compile Include="Managers\FlightManager.cs" />
-    <Compile Include="Engines\PlaneEngines.cs" />
     <Compile Include="VehicleTypes\PlaneVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\RCCrosshair.cs" />
-    <Compile Include="Engines\RCEngines.cs" />
+    <Compile Include="Engines\RCPlaneEngine.cs" />
     <Compile Include="VehicleTypes\ShipVehicle.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Prefabs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"

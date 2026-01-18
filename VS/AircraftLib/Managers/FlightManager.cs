@@ -1,4 +1,5 @@
-﻿using AircraftLib.VehicleTypes;
+﻿using AircraftLib.Utility;
+using AircraftLib.VehicleTypes;
 using Nautilus.Extensions;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,6 @@ namespace AircraftLib.Managers
 {
     public class FlightManager
     {
-        public static Vehicle playerVehicle;
-
-        public static float liftFactor;
-
         public static void ShowHintMessage(string messageToHint)
         {
             Nautilus.Utility.BasicText message = new Nautilus.Utility.BasicText(500, 0);
@@ -34,20 +31,20 @@ namespace AircraftLib.Managers
             mv.stabilizeRoll = enabled;
         }
 
-        public static void CheckLandingGear(ModVehicle mv)
+        public static void CheckLandingGear(PlaneVehicle mv)
         {
             if (mv == null)
             {
                 return;
             }
 
-            if (mv.GetIsUnderwater())
+            if (mv.IsGearOut())
             {
-                mv.gameObject.FindChild("LandingGear").gameObject.SetActive(false);
+                mv.gameObject.FindChild("LandingGear").gameObject.SetActive(true);
             }
             else
             {
-                mv.gameObject.FindChild("LandingGear").gameObject.SetActive(true);
+                mv.gameObject.FindChild("LandingGear").gameObject.SetActive(false);
             }
         }
 
@@ -65,26 +62,28 @@ namespace AircraftLib.Managers
 
 
 
-        public static void DoPlaneFlight(ModVehicle mv)
+        public static void DoPlaneFlight(PlaneVehicle vehicle)
         {
-            if (mv == null)
+            if (vehicle == null)
             {
                 return;
             }
-            mv.moveOnLand = true;
+            vehicle.moveOnLand = true;
+            Rigidbody rb = vehicle.useRigidbody;
 
-            mv.worldForces.aboveWaterDrag = 0.5f;
+            //rb.useGravity = !vehicle.GetIsUnderwater();
 
-            // set liftFactor between 0 and takeoff speed based on current speed
-            liftFactor = Mathf.Clamp(Mathf.Abs(mv.useRigidbody.velocity.z), 0, (mv as PlaneVehicle).takeoffSpeed);
-            liftFactor /= (mv as PlaneVehicle).takeoffSpeed;
+            float airDensity = 1.225f * Mathf.Pow(1f - (vehicle.transform.position.y / 44300f), 4.23f);
 
-            // add lift force (gravity x -2 so that max lift is twice gravity)
-            mv.useRigidbody.AddRelativeForce(Physics.gravity * -2 * liftFactor, ForceMode.Acceleration);
+            float liftForce = vehicle.GetCalculatedLiftCoefficient() * vehicle.WingArea * (0.5f * airDensity * rb.velocity.magnitude * rb.velocity.magnitude);
 
-            mv.useRigidbody.velocity = Vector3.ClampMagnitude(mv.useRigidbody.velocity, (mv as PlaneVehicle).maxSpeed);
+            rb.AddRelativeForce(new Vector3(0f, liftForce, 0f), ForceMode.Force);
 
-            //ShowHintMessage(mv.useRigidbody.velocity.ToString() + liftFactor.ToString());
+            ALLogger.Log("AOA: " + vehicle.AngleOfAttack.ToString());
+            ALLogger.Log("Lift Coefficient: " + vehicle.GetCalculatedLiftCoefficient().ToString());
+            ALLogger.Log("Air density: " + airDensity.ToString());
+            ALLogger.Log("Velocity: " + rb.velocity.magnitude.ToString());
+            ALLogger.Log("Lift force: " + liftForce.ToString());
         }
 
         public static void DoHoverFlight(ModVehicle mv)
@@ -113,7 +112,7 @@ namespace AircraftLib.Managers
 
         public static bool checkUnderwaterActual(ModVehicle mv)
         {
-            if (mv.gameObject.transform.position.y < 0.75f)
+            if (mv.gameObject.transform.position.y < WaveManager.main.GetWaveHeight(mv.gameObject.transform.position))
             {
                 return true;
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Base;
 
 namespace AircraftLib.Managers
 {
@@ -12,7 +13,13 @@ namespace AircraftLib.Managers
         public Transform vehicle;
         private Rigidbody rb;
 
+        public Side side;
+
         public float pushForce;
+
+
+        public float rollForce = 40f;
+
 
         public override void Awake()
         {
@@ -33,8 +40,28 @@ namespace AircraftLib.Managers
         {
             if (GameInput.GetButtonDown(GameInput.Button.LeftHand))
             {
-                rb.AddRelativeForce(new Vector3(0f, pushForce/2, -pushForce), ForceMode.Impulse);
+                // push back
+                if (side == Side.Centre)
+                {
+                    rb.AddRelativeForce(new Vector3(0f, pushForce / 2, -pushForce), ForceMode.Impulse);
+                }
+
+
+                // roll
+                if (side == Side.Left)
+                {
+                    rb.AddRelativeTorque(new Vector3(0, 0, -rollForce), ForceMode.VelocityChange);
+                }
+                else if (side == Side.Right)
+                {
+                    rb.AddRelativeTorque(new Vector3(0, 0, rollForce), ForceMode.VelocityChange);
+                }
             }
         }
+
+
+
+
+        public enum Side { Left, Right, Centre };
     }
 }

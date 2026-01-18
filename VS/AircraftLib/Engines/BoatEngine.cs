@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using VehicleFramework;
 using VehicleFramework.Engines;
+using VehicleFramework.Interfaces;
 using static GameInput;
 
 namespace AircraftLib.Engines
@@ -32,13 +33,6 @@ namespace AircraftLib.Engines
         {
             return;
         }
-        protected override float waterDragDecay
-        {
-            get
-            {
-                return 0f;
-            }
-        }
         protected override float DragDecay
         {
             get 
@@ -56,12 +50,12 @@ namespace AircraftLib.Engines
 
             // turning
             int turnVec = 0;
-            if ( GameInput.GetKey(AircraftLibPlugin.ModConfig.yawLeftBind) && !GameInput.GetKey(AircraftLibPlugin.ModConfig.yawRightBind) )
+            if ( GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey) && !GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey) )
             {
                 // left
                 turnVec = -1;
             }
-            else if ( !GameInput.GetKey(AircraftLibPlugin.ModConfig.yawLeftBind) && GameInput.GetKey(AircraftLibPlugin.ModConfig.yawRightBind) )
+            else if ( !GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey) && GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey) )
             {
                 // right
                 turnVec = 1;
@@ -70,7 +64,7 @@ namespace AircraftLib.Engines
             if (turnVec != 0 && ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position))
             {
                 // Get moving forward or backwards
-                float dot = Vector3.Dot(rb.velocity, transform.forward);
+                float dot = Vector3.Dot(RB.velocity, transform.forward);
                 float moveVector = 1;
 
                 if (dot < 0)
@@ -79,15 +73,15 @@ namespace AircraftLib.Engines
                 }
 
                 // calculate turn forces
-                float roll = turnVec * TurnTiltForce * Time.fixedDeltaTime * Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / SpeedAtMaxTilt);
+                float roll = turnVec * TurnTiltForce * Time.fixedDeltaTime * Mathf.Clamp01(Mathf.Abs(RB.velocity.magnitude) / SpeedAtMaxTilt);
                 float yaw = turnVec * moveVector * MaxTurnForce * Time.fixedDeltaTime;
 
                 if (TurnDependsOnSpeed)
                 {
-                    yaw = yaw * Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / (SpeedAtMaxYaw));
+                    yaw = yaw * Mathf.Clamp01(Mathf.Abs(RB.velocity.magnitude) / (SpeedAtMaxYaw));
                 }
 
-                rb.AddRelativeTorque(new Vector3(0f, yaw, roll), ForceMode.Force);
+                RB.AddRelativeTorque(new Vector3(0f, yaw, roll), ForceMode.Force);
             }
 
             
@@ -149,7 +143,7 @@ namespace AircraftLib.Engines
                 float deadzone = 20f / 100f;
                 bool triggerState = (UnityEngine.Input.GetAxisRaw("ControllerAxis3") > deadzone) || (UnityEngine.Input.GetAxisRaw("ControllerAxis3") < -deadzone);
 
-                ExecuteFreeLook(mv);
+                ExecuteFreeLook(MV);
 
                 if (triggerState && !wasFreelyPilotingLastFrame)
                 {
@@ -195,13 +189,13 @@ namespace AircraftLib.Engines
         private void MoveCamera()
         {
             Vector2 myLookDelta = GameInput.GetLookDelta();
-            if (myLookDelta == Vector2.zero)
+            /*if (myLookDelta == Vector2.zero)
             {
                 myLookDelta.x -= GameInput.GetAnalogValueForButton(GameInput.Button.LookLeft);
                 myLookDelta.x += GameInput.GetAnalogValueForButton(GameInput.Button.LookRight);
                 myLookDelta.y += GameInput.GetAnalogValueForButton(GameInput.Button.LookUp);
                 myLookDelta.y -= GameInput.GetAnalogValueForButton(GameInput.Button.LookDown);
-            }
+            }*/
             mcc.rotationX += myLookDelta.x;
             mcc.rotationY += myLookDelta.y;
             mcc.rotationX = Mathf.Clamp(mcc.rotationX, -120, 120);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AircraftLib.Utility;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,13 +20,13 @@ namespace AircraftLib.Managers
             AssetBundle assetBundle = AssetBundle.LoadFromFile(Path.Combine(directory, "assets/aircraftlib"));
             if (assetBundle == null)
             {
-                VehicleFramework.Logger.Log("Failure loading RCCrosshair assetbundle");
+                ALLogger.Error("Failure loading RCCrosshair assetbundle");
             }
             else
             {
                 rcCrosshairCanvas = assetBundle.LoadAsset<GameObject>("TetherCanvas");
 
-                VehicleFramework.Logger.Log("RCCrosshair assets loaded");
+                ALLogger.Log("RCCrosshair assets loaded");
             }
         }
     }

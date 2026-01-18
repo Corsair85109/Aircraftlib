@@ -26,6 +26,16 @@ namespace AircraftLib.Managers
             float amp = baseAmplitude;
             float speed = baseSpeed;
 
+
+            // anti motion sickness solution
+            // makes wave height the same at every position, preventing boat roll
+            if (!AircraftLibPlugin.ModConfig.useAccurateWaterSurface)
+            {
+                height = Mathf.Sin(freq + time * speed / 2) * (amp / 2);
+                return height;
+            }
+
+
             // add sine waves to simulate water surface
 
             freq = freq * 1f;
@@ -43,6 +53,11 @@ namespace AircraftLib.Managers
             amp = amp * 0.1f;
             speed = speed * 2f;
             height += Mathf.Sin((position.x + position.z) * freq + time * speed) * amp;
+
+            freq = freq * 1f;
+            amp = amp * 0.1f;
+            speed = speed * 4f;
+            height += Mathf.Sin((position.x - position.z) * freq + time * speed) * amp;
 
 
             return height;

@@ -1,22 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\",
+  "WorkspaceRootPath": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|c:\\users\\aaron\\documents\\github\\aircraftlib\\vs\\aircraftlib\\managers\\shippushpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\shippushpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|c:\\github\\aircraftlib\\vs\\aircraftlib\\patches\\foundationpatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:patches\\foundationpatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\boatengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\boatengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\prefabs\\smoothplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:prefabs\\smoothplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\aircraftlibplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:aircraftlibplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\buoyant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\buoyant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\vehicletypes\\planevehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:vehicletypes\\planevehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\throttledengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\throttledengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\utility\\realisticcontrollcrosshair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:utility\\realisticcontrollcrosshair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,51 +75,102 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ShipPushPoint.cs",
-              "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\ShipPushPoint.cs",
-              "RelativeDocumentMoniker": "Managers\\ShipPushPoint.cs",
-              "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\ShipPushPoint.cs",
-              "RelativeToolTip": "Managers\\ShipPushPoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABhAAAAAAAAAA==",
+              "Title": "FoundationPatch.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Patches\\FoundationPatch.cs",
+              "RelativeDocumentMoniker": "Patches\\FoundationPatch.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Patches\\FoundationPatch.cs*",
+              "RelativeToolTip": "Patches\\FoundationPatch.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T17:04:09.814Z",
+              "WhenOpened": "2026-01-18T03:44:36.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BoatEngine.cs",
-              "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\BoatEngine.cs",
-              "RelativeDocumentMoniker": "Engines\\BoatEngine.cs",
-              "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\BoatEngine.cs",
-              "RelativeToolTip": "Engines\\BoatEngine.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAYwFEAAAAkAAAAAAAAAA==",
+              "Title": "SmoothPlatform.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Prefabs\\SmoothPlatform.cs",
+              "RelativeDocumentMoniker": "Prefabs\\SmoothPlatform.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Prefabs\\SmoothPlatform.cs",
+              "RelativeToolTip": "Prefabs\\SmoothPlatform.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDQAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T05:03:54.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Buoyant.cs",
-              "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\Buoyant.cs",
-              "RelativeDocumentMoniker": "Managers\\Buoyant.cs",
-              "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\Buoyant.cs",
-              "RelativeToolTip": "Managers\\Buoyant.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCwAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T16:15:33.852Z"
+              "WhenOpened": "2026-01-11T05:39:35.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "WaveManager.cs",
-              "DocumentMoniker": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\WaveManager.cs",
-              "RelativeDocumentMoniker": "Managers\\WaveManager.cs",
-              "ToolTip": "C:\\Users\\Aaron\\Documents\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\WaveManager.cs",
-              "RelativeToolTip": "Managers\\WaveManager.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwC8AAAAaAAAAAAAAAA==",
+              "Title": "AircraftLibPlugin.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\AircraftLibPlugin.cs",
+              "RelativeDocumentMoniker": "AircraftLibPlugin.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\AircraftLibPlugin.cs",
+              "RelativeToolTip": "AircraftLibPlugin.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAACQAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T15:11:50.505Z"
+              "WhenOpened": "2026-01-11T04:09:48.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FlightManager.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\FlightManager.cs",
+              "RelativeDocumentMoniker": "Managers\\FlightManager.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\FlightManager.cs",
+              "RelativeToolTip": "Managers\\FlightManager.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCoAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T14:53:39.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThrottledEngine.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\ThrottledEngine.cs",
+              "RelativeDocumentMoniker": "Engines\\ThrottledEngine.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\ThrottledEngine.cs",
+              "RelativeToolTip": "Engines\\ThrottledEngine.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAD0AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T14:39:16.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlaneVehicle.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\VehicleTypes\\PlaneVehicle.cs",
+              "RelativeDocumentMoniker": "VehicleTypes\\PlaneVehicle.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\VehicleTypes\\PlaneVehicle.cs",
+              "RelativeToolTip": "VehicleTypes\\PlaneVehicle.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wCgAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T15:30:24.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RCPlaneEngine.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\RCPlaneEngine.cs",
+              "RelativeDocumentMoniker": "Engines\\RCPlaneEngine.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\RCPlaneEngine.cs",
+              "RelativeToolTip": "Engines\\RCPlaneEngine.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAUwJMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T14:04:45.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RealisticControllCrosshair.cs",
+              "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Utility\\RealisticControllCrosshair.cs",
+              "RelativeDocumentMoniker": "Utility\\RealisticControllCrosshair.cs",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Utility\\RealisticControllCrosshair.cs",
+              "RelativeToolTip": "Utility\\RealisticControllCrosshair.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAcwEIAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T14:00:00.009Z"
             }
           ]
         }

@@ -5,6 +5,8 @@ using Nautilus.Handlers;
 using UnityEngine;
 using AircraftLib.Utility;
 using AircraftLib.Managers;
+using AircraftLib.Prefabs;
+using UWE;
 
 namespace AircraftLib
 {
@@ -32,9 +34,18 @@ namespace AircraftLib
 
             RCCrosshair.LoadAssets();
 
+            ConsoleCommandsHandler.RegisterConsoleCommands(typeof(ConsoleCommands));
+
 
 
             Logger.LogInfo($"{PluginName} version {VersionString} is loaded.");
         }
+
+        // keybinds
+        public static GameInput.Button YawLeftKey = EnumHandler.AddEntry<GameInput.Button>("YawLeftKey").CreateInput("Yaw Left").SetBindable().WithKeyboardBinding(GameInputHandler.Paths.Keyboard.A).WithCategory("Aircraftlib Keybinds");
+        public static GameInput.Button YawRightKey = EnumHandler.AddEntry<GameInput.Button>("YawRightKey").CreateInput("Yaw Right").SetBindable().WithKeyboardBinding(GameInputHandler.Paths.Keyboard.D).WithCategory("Aircraftlib Keybinds");
+        public static GameInput.Button IncreaseThrustKey = EnumHandler.AddEntry<GameInput.Button>("IncreaseThrustKey").CreateInput("Increase Thrust").SetBindable().WithKeyboardBinding(GameInputHandler.Paths.Keyboard.W).WithCategory("Aircraftlib Keybinds");
+        public static GameInput.Button DecreaseThrustKey = EnumHandler.AddEntry<GameInput.Button>("DecreaseThrustKey").CreateInput("Decrease Thrust").SetBindable().WithKeyboardBinding(GameInputHandler.Paths.Keyboard.S).WithCategory("Aircraftlib Keybinds");
+        public static GameInput.Button BrakeKey = EnumHandler.AddEntry<GameInput.Button>("BrakeKey").CreateInput("Brakes").SetBindable().WithKeyboardBinding(GameInputHandler.Paths.Keyboard.Space).WithCategory("Aircraftlib Keybinds");
     }
 }
