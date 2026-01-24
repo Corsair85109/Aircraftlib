@@ -19,5 +19,8 @@ namespace AircraftLib.Utility
 
         [Toggle("More realistic waves (can cause motion sickness)")]
         public bool useAccurateWaterSurface = true;
+
+        [Toggle("Disable camera shake")]
+        public bool disableCameraShake = false;
     }
 }

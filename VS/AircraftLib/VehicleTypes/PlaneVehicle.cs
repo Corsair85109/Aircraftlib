@@ -13,8 +13,10 @@ namespace AircraftLib.VehicleTypes
 {
     public abstract class PlaneVehicle : Submersible
     {
-        public abstract float UnderwaterDrag {  get; }
-        public abstract float AbovewaterDrag { get; }
+        public virtual float UnderwaterDrag { get; set; } = 0.5f;
+        public virtual float AbovewaterDrag { get; set; } = 0.05f;
+
+        public virtual float GearExtraDrag { get; set; } = 0.01f;
 
         public abstract float WingArea { get; set; }
         public virtual float LiftSlope { get { return 0.1f; } }
@@ -23,24 +25,52 @@ namespace AircraftLib.VehicleTypes
         public virtual float CriticalAOA { get { return 20f; } }
         public virtual int ZeroLiftAOA { get { return -2; } }
 
-        protected virtual bool gearOut { get; private set; } = true;
+        public bool gearOut = true;
 
 
-        public float AngleOfAttack { get; private set; }
+        public float AngleOfAttack;
+        public float GLoad;
+        private Vector3 lastVelocity = Vector3.zero;
 
         public override void FixedUpdate()
         {
-            base.FixedUpdate();
+            float underwaterDrag = gearOut ? UnderwaterDrag + GearExtraDrag : UnderwaterDrag;
+            float abovewaterDrag = gearOut ? AbovewaterDrag + GearExtraDrag : AbovewaterDrag;
 
-            worldForces.aboveWaterDrag = AbovewaterDrag;
-            worldForces.underwaterDrag = UnderwaterDrag;
+            worldForces.underwaterDrag = underwaterDrag;
+            worldForces.aboveWaterDrag = abovewaterDrag;
+
+            base.FixedUpdate();
 
             Rigidbody rb = GetComponent<Rigidbody>();
 
-            Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
-            AngleOfAttack = -Mathf.Atan2(localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
+            rb.drag = GetIsUnderwater() ? underwaterDrag : abovewaterDrag;
+
+            AngleOfAttack = GetAngleOfAttack(rb);
+
+            GLoad = GetGLoad(rb, lastVelocity);
+            lastVelocity = rb.velocity;
 
             FlightManager.DoPlaneFlight(this);
+        }
+
+        public float GetAngleOfAttack()
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+            return -Mathf.Atan2(localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
+        }
+        public float GetAngleOfAttack(Rigidbody rb)
+        {
+            Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+            return -Mathf.Atan2(localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
+        }
+
+        public float GetGLoad(Rigidbody rb, Vector3 prevVelocity)
+        {
+            Vector3 acceleration = (rb.velocity - prevVelocity) / Time.fixedDeltaTime;
+            float vertAcceleration = Vector3.Dot(acceleration, transform.up);
+            return (vertAcceleration + Physics.gravity.magnitude) / Physics.gravity.magnitude;
         }
 
         public override void Start()
@@ -70,17 +100,8 @@ namespace AircraftLib.VehicleTypes
                 float stall = Mathf.InverseLerp(CriticalAOA, CriticalAOA + 10f, AngleOfAttack);
                 liftCoeff = Mathf.Lerp(MaxLiftCoefficient, 0.5f * MaxLiftCoefficient, stall);
             }
-            else if (AngleOfAttack < -CriticalAOA)
-            {
-                float stall = Mathf.InverseLerp(-CriticalAOA, -CriticalAOA - 10f, AngleOfAttack);
-            }
 
             return liftCoeff;
-        }
-
-        public bool IsGearOut()
-        {
-            return gearOut;
         }
     }
 }

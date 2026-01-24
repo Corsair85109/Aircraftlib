@@ -38,9 +38,14 @@ namespace AircraftLib.Managers
                 return;
             }
 
-            if (mv.IsGearOut())
+            if (mv.gearOut)
             {
+                // when a wheel collider is enabled the rigidbody velocity resets to 0, 0, 0
+                // so save previous velocity and restore it after the gear is enabled
+                Rigidbody rb = mv.GetComponent<Rigidbody>();
+                Vector3 velocity = rb.velocity;
                 mv.gameObject.FindChild("LandingGear").gameObject.SetActive(true);
+                rb.velocity = velocity;
             }
             else
             {
@@ -71,19 +76,17 @@ namespace AircraftLib.Managers
             vehicle.moveOnLand = true;
             Rigidbody rb = vehicle.useRigidbody;
 
-            //rb.useGravity = !vehicle.GetIsUnderwater();
-
             float airDensity = 1.225f * Mathf.Pow(1f - (vehicle.transform.position.y / 44300f), 4.23f);
 
             float liftForce = vehicle.GetCalculatedLiftCoefficient() * vehicle.WingArea * (0.5f * airDensity * rb.velocity.magnitude * rb.velocity.magnitude);
 
             rb.AddRelativeForce(new Vector3(0f, liftForce, 0f), ForceMode.Force);
 
-            ALLogger.Log("AOA: " + vehicle.AngleOfAttack.ToString());
+            /*ALLogger.Log("AOA: " + vehicle.AngleOfAttack.ToString());
             ALLogger.Log("Lift Coefficient: " + vehicle.GetCalculatedLiftCoefficient().ToString());
             ALLogger.Log("Air density: " + airDensity.ToString());
             ALLogger.Log("Velocity: " + rb.velocity.magnitude.ToString());
-            ALLogger.Log("Lift force: " + liftForce.ToString());
+            ALLogger.Log("Lift force: " + liftForce.ToString());*/
         }
 
         public static void DoHoverFlight(ModVehicle mv)

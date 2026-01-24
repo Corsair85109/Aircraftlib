@@ -58,6 +58,8 @@ namespace AircraftLib.Engines
 
         public virtual bool CanStrafeOnLand { get { return false; } }
 
+        public virtual float UnderWaterThrustMult { get { return 1f; } }
+
 
         public float throttle = 0f;
         protected float lastThrottle = 0f;
@@ -120,19 +122,21 @@ namespace AircraftLib.Engines
             // display throttle with nautilus message
             if (throttle != lastThrottle)
             {
-                ALUtils.NautilusBasicText("Throttle: " + throttle.ToString(), 1f);
+                //ALUtils.NautilusBasicText("Throttle: " + throttle.ToString(), 1f);
             }
             lastThrottle = throttle;
         }
 
         protected virtual void ApplyForce()
         {
+            bool underWater = ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position);
             if (throttle != 0f)
             {
-                if (CanMoveAboveWater || ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position))
+                if (CanMoveAboveWater || underWater)
                 {
                     float thrust = (throttle < 0f) ? MaxReverseThrust : MaxForwardThrust;
                     thrust = ((throttle / 100) * thrust) * Time.fixedDeltaTime;
+                    if (underWater) thrust *= UnderWaterThrustMult;
 
                     Vector3 localForce = new Vector3(0f, 0f, thrust);
 
@@ -150,33 +154,39 @@ namespace AircraftLib.Engines
                     {
                         RB.AddRelativeTorque(new Vector3(-PitchBackMult * thrust * throttle * Time.fixedDeltaTime, 0f, 0f));
                     }
+                }
+            }
 
-                    if (CanStrafe && (CanStrafeOnLand ||  MV.transform.position.y <= Ocean.GetOceanLevel()))
-                    {
-                        int strafeDirection = 0;
-                        int vertDirection = 0;
-                        if (GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey))
-                        {
-                            strafeDirection -= 1;
-                        }
-                        if (GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey))
-                        {
-                            strafeDirection += 1;
-                        }
-                        if (GameInput.GetButtonHeld(AircraftLibPlugin.UpKey))
-                        {
-                            vertDirection += 1;
-                        }
-                        if (GameInput.GetButtonHeld(AircraftLibPlugin.DownKey))
-                        {
-                            vertDirection -= 1;
-                        }
+            if (CanStrafe && (CanStrafeOnLand || MV.transform.position.y <= Ocean.GetOceanLevel()))
+            {
+                int strafeDirection = 0;
+                int vertDirection = 0;
+                if (GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey))
+                {
+                    strafeDirection -= 1;
+                }
+                if (GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey))
+                {
+                    strafeDirection += 1;
+                }
+                if (GameInput.GetButtonHeld(AircraftLibPlugin.UpKey))
+                {
+                    vertDirection += 1;
+                }
+                if (GameInput.GetButtonHeld(AircraftLibPlugin.DownKey))
+                {
+                    vertDirection -= 1;
+                }
 
-                        if (strafeDirection != 0 || vertDirection != 0)
-                        {
-                            RB.AddRelativeForce(new Vector3(strafeDirection * StrafeThrust * Time.fixedDeltaTime, vertDirection * StrafeThrust * Time.fixedDeltaTime, 0f), ForceMode.Force);
-                        }
-                    }
+                float strafeMult = 1f;
+                if (underWater)
+                {
+                    strafeMult = UnderWaterThrustMult;
+                }
+
+                if (strafeDirection != 0 || vertDirection != 0)
+                {
+                    RB.AddRelativeForce(new Vector3(strafeDirection * StrafeThrust * strafeMult * Time.fixedDeltaTime, vertDirection * StrafeThrust * strafeMult * Time.fixedDeltaTime, 0f), ForceMode.Force);
                 }
             }
         }

@@ -40,9 +40,9 @@ namespace AircraftLib.Engines
             RealisticControllCrosshair.Instance.SetRealisticCrosshairControlsActive(false);
         }
 
-        protected float rollSensitivity { get; private set; } = -200f;
-        protected float pitchSensitivity { get; private set; } = -100f;
-        protected float yawSensitivity { get; private set; } = 5f;
+        protected virtual float rollSensitivity { get; set; } = -200f;
+        protected virtual float pitchSensitivity { get; set; } = -100f;
+        protected virtual float yawSensitivity { get; set; } = 5f;
 
         protected virtual float speedDiv { get; set; } = 100f;
 
@@ -169,11 +169,11 @@ namespace AircraftLib.Engines
 
             if (inputYawValue != 0f)
             {
-                RB.AddTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * inputYawValue * -3, ForceMode.Acceleration);
+                RB.AddRelativeTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * inputYawValue * -3, ForceMode.Acceleration);
             }
             else
             {
-                RB.AddTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * yawValue * rollDirection * -3, ForceMode.Acceleration);
+                RB.AddRelativeTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * yawValue * rollDirection * -3, ForceMode.Acceleration);
             }
         }
 
