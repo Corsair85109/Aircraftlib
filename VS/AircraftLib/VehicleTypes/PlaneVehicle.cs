@@ -84,7 +84,7 @@ namespace AircraftLib.VehicleTypes
         {
             base.Update();
 
-            if (GameInput.GetButtonDown(AircraftLibPlugin.GearKey))
+            if (GameInput.GetButtonDown(AircraftLibPlugin.GearKey) && IsPlayerControlling())
             {
                 gearOut = !gearOut;
                 FlightManager.CheckLandingGear(this);

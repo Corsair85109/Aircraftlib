@@ -60,6 +60,8 @@ namespace AircraftLib.Engines
 
         public virtual float UnderWaterThrustMult { get { return 1f; } }
 
+        public bool isStrafing { get; private set; } = false;
+
 
         public float throttle = 0f;
         protected float lastThrottle = 0f;
@@ -129,6 +131,8 @@ namespace AircraftLib.Engines
 
         protected virtual void ApplyForce()
         {
+            isStrafing = false;
+
             bool underWater = ThrustPosition.position.y < WaveManager.main.GetWaveHeight(ThrustPosition.position);
             if (throttle != 0f)
             {
@@ -186,6 +190,7 @@ namespace AircraftLib.Engines
 
                 if (strafeDirection != 0 || vertDirection != 0)
                 {
+                    isStrafing = true;
                     RB.AddRelativeForce(new Vector3(strafeDirection * StrafeThrust * strafeMult * Time.fixedDeltaTime, vertDirection * StrafeThrust * strafeMult * Time.fixedDeltaTime, 0f), ForceMode.Force);
                 }
             }
@@ -193,6 +198,8 @@ namespace AircraftLib.Engines
 
         public void DrainThrottledPower()
         {
+            if (!MV.IsPlayerControlling()) return;
+
             float upgradeModifier = Mathf.Pow(0.85f, MV.NumEfficiencyModules);
 
             float throttleMult = Mathf.Abs(throttle / 100) * 3;

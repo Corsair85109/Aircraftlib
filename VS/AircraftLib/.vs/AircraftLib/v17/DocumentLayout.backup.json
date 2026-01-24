@@ -3,15 +3,7 @@
   "WorkspaceRootPath": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|c:\\github\\aircraftlib\\vs\\aircraftlib\\utility\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:utility\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|c:\\github\\aircraftlib\\vs\\aircraftlib\\engines\\throttledengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\throttledengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\throttledengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,12 +11,20 @@
       "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:vehicletypes\\planevehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:engines\\rcplaneengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\aircraftlibplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:aircraftlibplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\utility\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:utility\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23C101E-63FA-4120-86E9-BEE2618FC5CC}|AircraftLib.csproj|solutionrelative:managers\\flightmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,59 +66,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Config.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Utility\\Config.cs",
               "RelativeDocumentMoniker": "Utility\\Config.cs",
-              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Utility\\Config.cs*",
-              "RelativeToolTip": "Utility\\Config.cs*",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Utility\\Config.cs",
+              "RelativeToolTip": "Utility\\Config.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T08:43:20.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T08:43:20.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PlaneVehicle.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\VehicleTypes\\PlaneVehicle.cs",
               "RelativeDocumentMoniker": "VehicleTypes\\PlaneVehicle.cs",
               "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\VehicleTypes\\PlaneVehicle.cs",
               "RelativeToolTip": "VehicleTypes\\PlaneVehicle.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAYwDMAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAADwv1YAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-24T04:01:52.537Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RCPlaneEngine.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\RCPlaneEngine.cs",
               "RelativeDocumentMoniker": "Engines\\RCPlaneEngine.cs",
               "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\RCPlaneEngine.cs",
               "RelativeToolTip": "Engines\\RCPlaneEngine.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwBoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T12:23:14.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-18T12:23:14.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "AircraftLibPlugin.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\AircraftLibPlugin.cs",
               "RelativeDocumentMoniker": "AircraftLibPlugin.cs",
               "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\AircraftLibPlugin.cs",
               "RelativeToolTip": "AircraftLibPlugin.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAWwDAAAACDAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAtwDAAAACDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-11T04:09:48.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-11T04:09:48.627Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FlightManager.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Managers\\FlightManager.cs",
               "RelativeDocumentMoniker": "Managers\\FlightManager.cs",
@@ -126,18 +123,17 @@
               "RelativeToolTip": "Managers\\FlightManager.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAIwFgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T14:53:39.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-10T14:53:39.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ThrottledEngine.cs",
               "DocumentMoniker": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\ThrottledEngine.cs",
               "RelativeDocumentMoniker": "Engines\\ThrottledEngine.cs",
-              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\ThrottledEngine.cs",
-              "RelativeToolTip": "Engines\\ThrottledEngine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKAAAAANAAAAAAAAAA==",
+              "ToolTip": "C:\\GitHub\\Aircraftlib\\VS\\AircraftLib\\Engines\\ThrottledEngine.cs*",
+              "RelativeToolTip": "Engines\\ThrottledEngine.cs*",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAswMgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-10T14:39:16.895Z",
               "EditorCaption": ""
