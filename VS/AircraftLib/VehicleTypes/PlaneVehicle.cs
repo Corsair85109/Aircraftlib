@@ -25,6 +25,9 @@ namespace AircraftLib.VehicleTypes
         public virtual float CriticalAOA { get { return 20f; } }
         public virtual int ZeroLiftAOA { get { return -2; } }
 
+        public virtual float vertStabilizerFactor { get { return 0.125f; } }
+        public virtual int maxYawFromRudder { get { return 15; } }
+
         public bool gearOut = true;
 
 

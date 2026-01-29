@@ -82,11 +82,44 @@ namespace AircraftLib.Managers
 
             rb.AddRelativeForce(new Vector3(0f, liftForce, 0f), ForceMode.Force);
 
+            int rudderAngle = 0;
+            if (GameInput.GetButtonHeld(AircraftLibPlugin.YawLeftKey))
+            {
+                rudderAngle -= vehicle.maxYawFromRudder;
+            }
+            if (GameInput.GetButtonHeld(AircraftLibPlugin.YawRightKey))
+            {
+                rudderAngle += vehicle.maxYawFromRudder;
+            }
+
+            TorqueTowardsMovementVector(rb, vehicle.vertStabilizerFactor, rudderAngle);
+
             /*ALLogger.Log("AOA: " + vehicle.AngleOfAttack.ToString());
             ALLogger.Log("Lift Coefficient: " + vehicle.GetCalculatedLiftCoefficient().ToString());
             ALLogger.Log("Air density: " + airDensity.ToString());
             ALLogger.Log("Velocity: " + rb.velocity.magnitude.ToString());
             ALLogger.Log("Lift force: " + liftForce.ToString());*/
+        }
+
+        public static void TorqueTowardsMovementVector(Rigidbody rb, float factor, int rudderAngle)
+        {
+            if (rb.velocity.sqrMagnitude < 1)
+                return;
+
+            Quaternion rudderRotation = Quaternion.AngleAxis(rudderAngle, rb.transform.up);
+
+            Vector3 forwardVector = rudderRotation * rb.transform.forward;
+
+            Vector3 xzVelocity = Vector3.ProjectOnPlane(rb.velocity, rb.transform.up).normalized;
+            Vector3 xzForward = Vector3.ProjectOnPlane(rb.transform.forward, rb.transform.up).normalized;
+
+            float yawAngleDifference = Vector3.SignedAngle(xzForward, xzVelocity, rb.transform.up);
+
+            float torque = yawAngleDifference * factor * (rb.velocity.magnitude / 40);
+
+            rb.AddRelativeTorque(new Vector3(0, (rudderAngle / 8) * (rb.velocity.magnitude / 40), 0), ForceMode.Acceleration);
+
+            rb.AddTorque(rb.transform.up * torque, ForceMode.Acceleration);
         }
 
         public static void DoHoverFlight(ModVehicle mv)

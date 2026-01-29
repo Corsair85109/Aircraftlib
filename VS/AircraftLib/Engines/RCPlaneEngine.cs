@@ -145,35 +145,13 @@ namespace AircraftLib.Engines
             // disable roll stabilization
             FlightManager.StabilizeRoll(MV, false);
 
-            // do roll with mouse horizontalness
+            // roll
             RB.AddTorque(MV.transform.forward * Time.deltaTime * rollSensitivity * RealisticControllCrosshair.Instance.crosshairValue.x * speedMult, ForceMode.Acceleration);
 
-            // do yaw with bank angle
-            rollAngle = MV.transform.localEulerAngles.z;
-            rollAngle = FlightManager.GetNormalizedAngle(rollAngle);
-            rollDirection = rollAngle / Mathf.Abs(rollAngle);
-
-            // thank you to metious for this
-            if (Mathf.Abs(rollAngle) > 90)
+            if ((inputYawValue != 0f) && HasThrustVectoring)
             {
-                yawValue = Mathf.Lerp(1f, 0f,
-                Mathf.InverseLerp(90 * rollDirection, 180 * rollDirection, rollAngle)
-                );
-            }
-            else
-            {
-                yawValue = Mathf.Lerp(0f, 1f,
-                Mathf.InverseLerp(0 * rollDirection, 90 * rollDirection, rollAngle)
-                );
-            }
-
-            if (inputYawValue != 0f)
-            {
-                RB.AddRelativeTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * inputYawValue * -3, ForceMode.Acceleration);
-            }
-            else
-            {
-                RB.AddRelativeTorque(Vector3.up * Time.deltaTime * yawSensitivity * speedMult * yawValue * rollDirection * -3, ForceMode.Acceleration);
+                ALLogger.Log("YAWING!!");
+                RB.AddRelativeTorque(Vector3.up * Time.deltaTime * yawSensitivity * inputYawValue * -3, ForceMode.Acceleration);
             }
         }
 
