@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace AircraftLib.Utility
 {
-    internal class ALUtils
+    public class ALUtils
     {
         public static void NautilusBasicText(string msg, float time)
         {

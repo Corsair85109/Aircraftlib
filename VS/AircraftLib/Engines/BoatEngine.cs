@@ -23,7 +23,7 @@ namespace AircraftLib.Engines
 
 
         // stop mouse rotation
-        public override void ControlRotation()
+        public override void ControlRotation(Vector2 lookInput)
         {
             return;
         }
