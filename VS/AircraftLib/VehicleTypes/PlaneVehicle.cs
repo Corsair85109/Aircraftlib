@@ -94,7 +94,7 @@ namespace AircraftLib.VehicleTypes
             }
         }
 
-        public float GetCalculatedLiftCoefficient()
+        public virtual float GetLiftCoefficient()
         {
             float liftCoeff = LiftSlope * (AngleOfAttack - ZeroLiftAOA);
 

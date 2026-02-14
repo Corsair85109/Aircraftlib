@@ -78,7 +78,7 @@ namespace AircraftLib.Managers
 
             float airDensity = 1.225f * Mathf.Pow(1f - (vehicle.transform.position.y / 44300f), 4.23f);
 
-            float liftForce = vehicle.GetCalculatedLiftCoefficient() * vehicle.WingArea * (0.5f * airDensity * rb.velocity.magnitude * rb.velocity.magnitude);
+            float liftForce = vehicle.GetLiftCoefficient() * vehicle.WingArea * (0.5f * airDensity * rb.velocity.magnitude * rb.velocity.magnitude);
 
             rb.AddRelativeForce(new Vector3(0f, liftForce, 0f), ForceMode.Force);
 
@@ -95,7 +95,7 @@ namespace AircraftLib.Managers
             TorqueTowardsMovementVector(rb, vehicle.vertStabilizerFactor, rudderAngle);
 
             /*ALLogger.Log("AOA: " + vehicle.AngleOfAttack.ToString());
-            ALLogger.Log("Lift Coefficient: " + vehicle.GetCalculatedLiftCoefficient().ToString());
+            ALLogger.Log("Lift Coefficient: " + vehicle.GetLiftCoefficient.ToString());
             ALLogger.Log("Air density: " + airDensity.ToString());
             ALLogger.Log("Velocity: " + rb.velocity.magnitude.ToString());
             ALLogger.Log("Lift force: " + liftForce.ToString());*/

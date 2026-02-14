@@ -60,7 +60,7 @@ namespace AircraftLib.Engines
 
         public virtual float UnderWaterThrustMult { get { return 1f; } }
 
-        public bool isStrafing { get; private set; } = false;
+        public bool isStrafing = false;
 
 
         public float throttle = 0f;
