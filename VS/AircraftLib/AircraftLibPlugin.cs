@@ -16,7 +16,7 @@ namespace AircraftLib
     {
         private const string MyGUID = "com.Bobasaur.AircraftLib";
         private const string PluginName = "AircraftLib";
-        private const string VersionString = "2.1.1";
+        private const string VersionString = "2.1.2";
 
         private static readonly Harmony Harmony = new Harmony(MyGUID);
         public static ManualLogSource Log = new ManualLogSource(PluginName);
